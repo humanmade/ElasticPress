@@ -715,18 +715,19 @@ class Comment extends Indexable {
 	 * @return array
 	 */
 	public function query_db( $args ) {
-		$all_query = new WP_Comment_Query(
-			[
-				'count' => true,
-			]
-		);
+		/* START FORK CUSTOM CODE */
+		$all_query_args = apply_filters( 'ep_search_all_comments_args', [
+			'count' => true,
+		] );
 
-		$defaults = [
+		$all_query = new WP_Comment_Query( $all_query_args );
+		$defaults = apply_filters( 'ep_search_paginated_comments_args', [
 			'number'  => $this->get_bulk_items_per_page(),
 			'offset'  => 0,
 			'orderby' => 'comment_ID',
 			'order'   => 'desc',
-		];
+		] );
+		/* END FORK CUSTOM CODE */
 
 		if ( isset( $args['per_page'] ) ) {
 			$args['number'] = $args['per_page'];
