@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file, per [the Keep a Changelog standard](http://keepachangelog.com/).
 
+## [3.4.3] - 2020-10-21
+
+Bug Fixes:
+* Fix missing REST API permission callbacks.
+
 ## [3.4.3] - 2020-07-21
 
 Enhancements:
