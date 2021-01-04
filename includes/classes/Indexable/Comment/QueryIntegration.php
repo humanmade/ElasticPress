@@ -143,7 +143,7 @@ class QueryIntegration {
 			return count( $ep_query['documents'] );
 		}
 
-		$query->found_comments        = $ep_query['found_documents'];
+		$query->found_comments        = is_array( $ep_query['found_documents'] ) ? $ep_query['found_documents']['value'] : $ep_query['found_documents'];
 		$query->max_num_pages         = $query->query_vars['number'] <= 0 ? 1 : max( 1, ceil( $query->found_comments / absint( $query->query_vars['number'] ) ) );
 		$query->elasticsearch_success = true;
 
